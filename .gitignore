@@ -1,0 +1,4 @@
+wp/
+.idea/
+.DS_Store
+sql/02_backup.sql

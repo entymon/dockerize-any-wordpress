@@ -8,7 +8,7 @@ services:
     depends_on:
       - mysql    
     ports:
-      - 80:80
+      - 8001:80
     volumes:
       - ./wp:/var/www/html
 
@@ -17,5 +17,15 @@ services:
     restart: always
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8181:80
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: mysql
